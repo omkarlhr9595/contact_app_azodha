@@ -1,3 +1,4 @@
+import 'package:contact_app_azodha/screens/add_contact_page.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -19,29 +20,14 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          openAddContactSheet(context);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AddContactPage(),
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  void openAddContactSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return const SizedBox(
-          height: 200,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('This is bottom sheet'),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }
