@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: lightDynamic,
+          colorScheme: darkDynamic,
           useMaterial3: true,
         ),
         darkTheme: ThemeData(

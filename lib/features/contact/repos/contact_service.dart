@@ -24,4 +24,23 @@ class ContactService {
       throw Exception('Failed to add contact: $e');
     }
   }
+
+  Future<void> deleteContact(String id) async {
+    try {
+      final QuerySnapshot querySnapshot = await _firestore
+          .collection('contacts')
+          .where('id', isEqualTo: id)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final contactDoc = querySnapshot.docs.first;
+        await contactDoc.reference.delete();
+      } else {
+        print("Contact with ID $id does not exist.");
+        // You can handle this case as needed
+      }
+    } catch (e) {
+      throw Exception('Failed to delete contact: $e');
+    }
+  }
 }

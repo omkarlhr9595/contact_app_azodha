@@ -1,14 +1,28 @@
 part of 'contact_bloc.dart';
 
-@immutable
-sealed class ContactEvent {}
+sealed class ContactEvent extends Equatable {
+  const ContactEvent();
 
-class ContactInitialFetchEvent extends ContactEvent {}
-
-class ContactAddEvent extends ContactEvent {
-  final Contact newContact;
-
-  ContactAddEvent({required this.newContact});
+  @override
+  List<Object> get props => [];
 }
 
-class ContactDeleteEvent extends ContactEvent {}
+class FetchContacts extends ContactEvent {}
+
+class AddContact extends ContactEvent {
+  final Contact contact;
+
+  const AddContact(this.contact);
+
+  @override
+  List<Object> get props => [contact];
+}
+
+class DeleteContact extends ContactEvent {
+  final String contactId;
+
+  const DeleteContact(this.contactId);
+
+  @override
+  List<Object> get props => [contactId];
+}
